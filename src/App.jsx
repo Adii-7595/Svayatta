@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import './index.css';
 import gptLogo from './assets/chatgpt.svg';
@@ -10,9 +10,20 @@ import rocket from './assets/rocket.svg';
 import sendBtn from './assets/send.svg';
 import userIcon from './assets/user-icon.png';
 import gptImgLogo from './assets/chatgptLogo.svg';
+import { Context } from "./context/context";
+
+
 
 function App() {
 
+    const{onSent,recentPrompt, showResult, loading, resultData, setInput,input } = useContext(Context);
+
+    const handleSend = () => {
+      if (input.trim() !== "") {
+          onSent(input);
+          setInput("");
+      }
+  };
   return (
     <div className="App">
       <div className="sideBar">
@@ -34,23 +45,25 @@ function App() {
       </div>
       <div className='main'>
         <div className='chats'>
+          {recentPrompt && (
           <div className='chat'>
-            <img className='chatImg' src={userIcon} alt='' /><p className='txt'>Lorem ipsum dolor sitdngjlnfdgssssssss
-              sssss</p>
+            <img className='chatImg' src={userIcon} alt='' /><p className='txt'>{recentPrompt}</p>
           </div>
+          )}
           <div className='chat bot'>
             <img className='chatImg' src={gptImgLogo} alt='' /><p className='txt'>Lorem ipsum dolor aaaaaaaaaaaaaaaaagggg amet</p>
           </div>
         </div>
         <div className='chatFooter'>
           <div className='inp'>
-            <input type='text' placeholder='Send a message' /><button className='send'><img src={sendBtn} alt='SendBtn' /></button>
+            <input onChange={(e)=>setInput(e.target.value)} value={input} type='text' placeholder='Send a message' /><button className='send'  onClick={()=> onSent(input)}><img src={sendBtn} alt='SendBtn' /></button>
           </div>
           <p>Svayatta may produce inaccurate information about people, places, or facts. Svayatta April 23 Version</p>
         </div>
       </div>
     </div>
   );
+  
 }
 
 export default App;
