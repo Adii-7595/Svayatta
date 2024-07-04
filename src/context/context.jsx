@@ -1,49 +1,51 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import run from "../config/gemini";
 
 export const Context = createContext();
 
 const ContextProvider = (props) => {
+  const [input, setInput] = useState("");
+  const [recentPrompt, setRecentPrompt] = useState("");
+  const [previousPrompt, setPreviousPrompt] = useState("");
+  const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [resultData, setResultData] = useState("");
 
-    const [ input, setInput ] = useState("");
-    const [ recentPrompt, setRecentPrompt ] = useState("");
-    const [ previousPrompt, setPreviousPrompt ] = useState("");
-    const [ showResult, setShowResult ] = useState(false);
-    const [ loading, setLoading ] = useState(false);
-    const [ resultData, setResultData ] = useState("");
+  const onSent = async (prompt) => {
+    setShowResult(true); // Show result section
+    setRecentPrompt(input); // Set recent prompt to current input
+    setLoading(true); // Set loading state
 
-
-
-    const onSent = async (prompt)=>{
-        // console.log("loading...");
-        setResultData("")
-        setLoading(true)
-        setShowResult(true)
-        setRecentPrompt(input)
-        const response = await run(input)
-        setResultData(response)
-        setLoading(false)
-        setInput("")
+    try {
+      // Call run function asynchronously
+      const response = await run(prompt);
+      setResultData(response); // Set result data from API response
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      setResultData("Error occurred. Please try again."); // Handle error
     }
 
-    
-    
-    const contextValue = {
-        previousPrompt,
-        setPreviousPrompt,
-        onSent,
-        recentPrompt,
-        showResult,
-        loading,
-        resultData,
-        input,
-        setInput
-    }
+    setLoading(false); // Set loading state back to false
+    setInput(""); // Clear input field
+  };
 
-    return (
-        <Context.Provider value={contextValue}>
-            {props.children}
-        </Context.Provider>
-    )
-}
-export default ContextProvider
+  const contextValue = {
+    previousPrompt,
+    setPreviousPrompt,
+    onSent,
+    recentPrompt,
+    showResult,
+    loading,
+    resultData,
+    input,
+    setInput,
+  };
+
+  return (
+    <Context.Provider value={contextValue}>
+      {props.children}
+    </Context.Provider>
+  );
+};
+
+export default ContextProvider;
