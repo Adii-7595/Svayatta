@@ -41,6 +41,7 @@ body{
 }
 .brand {
   font-size: 2rem;
+  margin-left: 8px;
 
 }
 .upperside {
@@ -210,4 +211,28 @@ body{
   margin: 2rem 0;
   margin-left: 10rem;
 
+}
+
+body {
+  background: #000000; /* Black base */
+  color: #e50914; /* Netflix red for text */
+}
+
+.midBtn {
+  background: #ffffff; /* White for button */
+  color: #e50914; /* Netflix red text */
+}
+
+.query {
+  background: #333333; /* Dark gray for queries */
+  border: 1px solid #ffffff; /* White for border */
+}
+
+.bot {
+  background: #333333; /* Dark gray background for bot responses */
+}
+
+.inp {
+  background: #333333; /* Dark gray for input */
+  color: #ffffff; /* White text */
 }
