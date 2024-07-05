@@ -26,7 +26,7 @@ function App() {
       <div className="sideBar">
         <div className="upperside">
           <div className="upperSideTop">
-            <img src={gptLogo} alt="Logo" classNazme='logo' />
+            <img src={gptLogo} alt="Logo" className='logo' />
             <span className='brand'>Svayatta GPT</span>
           </div>
           <button className='midBtn'>
