@@ -60,6 +60,7 @@ body{
   height: 2rem;
   padding-right: 1rem;
   
+  
 }
 
 .midBtn {
@@ -219,7 +220,7 @@ body {
 }
 
 .midBtn {
-  background: #ffffff; /* White for button */
+  background: #333333; /* White for button */
   color: #e50914; /* Netflix red text */
 }
 
