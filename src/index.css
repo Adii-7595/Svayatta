@@ -15,9 +15,11 @@ html {
 }
 
 body{
-  background: rgb(3,0,31);
-  color: white;
+  
+  background: #000000; 
+  color: #d4d1d1; 
   font-family: 'Poppins', sans-serif;
+
 }
 .App{
   min-height: 100vh;
@@ -64,9 +66,9 @@ body{
 }
 
 .midBtn {
-  background: #5a4bff;
+  background: #333333;
+  color: #e50914; 
   border: none;
-  color: white;
   padding: 1.5rem;
   font-size: 1.5rem;
   width: 25rem;
@@ -82,8 +84,9 @@ body{
 .query{
   display: flex;
   align-items: center;
-  background: transparent;
-  color: rgba(222,222,222,1);
+  background: #333333; 
+  color: #d4d1d1;
+  border: 1px solid #ffffff; 
   padding: 1.5rem;
   width: 25rem;
   margin: 1rem auto;
@@ -166,7 +169,7 @@ body{
 
 }
 .bot{
-  background: rgba(28,30,58,1);
+  background: #333333; /* Dark gray background for bot responses */
   
 }
 .chatFooter {
@@ -180,7 +183,8 @@ body{
 }
 .inp {
   padding: 0.5rem;
-  background: rgba(28,30,50,1);
+  background: #333333; /* Dark gray for input */
+  color: #ffffff; /* White text */
   display: flex;
   width: 68rem;
   border-radius: 1rem;
@@ -212,28 +216,14 @@ body{
   margin: 2rem 0;
   margin-left: 10rem;
 
+
 }
 
-body {
-  background: #000000; /* Black base */
-  color: #e50914; /* Netflix red for text */
-}
 
-.midBtn {
-  background: #333333; /* White for button */
-  color: #e50914; /* Netflix red text */
-}
 
-.query {
-  background: #333333; /* Dark gray for queries */
-  border: 1px solid #ffffff; /* White for border */
-}
 
-.bot {
-  background: #333333; /* Dark gray background for bot responses */
-}
 
-.inp {
-  background: #333333; /* Dark gray for input */
-  color: #ffffff; /* White text */
-}
+
+
+
+
